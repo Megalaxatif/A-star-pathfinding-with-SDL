@@ -1,0 +1,42 @@
+<Pathfinding>
+
+
+struct cell{
+	int posx
+	int posy
+	int F_cost = sqrt( (x+end_cell_posx)²+(y+end_cell_posy)²) // distance between the cell and the end cell
+	int H_cost =sqrt( (x + start_cell_posx)² + (y + start_cell_posy)²) // distance between the cell and the starting cell
+	int G_cost // F cost + H cost
+	int parent[2] // coordinates of the parent cell
+}
+array OPEN // the cells we are looking at
+array CHOSEN // chosen cells
+
+
+void pathfinding(){
+
+add starting cell to OPEN
+
+loop:
+	// find the best cell among the cell in OPEN
+	foreach cell in OPEN
+		current = cell with the lowest G cost, priorityse the cell with the lowest F cost
+		remove current from OPEN
+		add current to CHOSEN
+
+	it current is end_cell
+		return
+
+	// add the neighbour cells to OPEN and set their parent to current
+	foreach neighbour of current
+		if neighbour is in CHOSEN or is not traversable
+			skip to next neighbour
+		add neighbour to OPEN
+		set neighbour parent to current
+	
+
+
+	
+	
+
+
