@@ -16,7 +16,7 @@ class cell{
         cell(int coordx, int coordy, CELL type);
         cell();
         void calculateFHGcost();
-        inline unsigned short get_type() {return type;}
+        inline CELL get_type() {return (CELL)type;}
         inline int get_coordx() {return x;}
         inline int get_coordy() {return y;}
         inline int getFcost() {return F_cost;}

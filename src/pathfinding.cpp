@@ -10,7 +10,7 @@ std::vector<cell*> open; // the cells we are looking at
 std::vector<cell*> chosen; // the chosen cells
 
 bool findNewOpenCell(cell *cell_){
-    if(maze[cell_->get_coordy()][cell_->get_coordx()].get_type() == (unsigned short)CELL::BORDER) {
+    if(maze[cell_->get_coordy()][cell_->get_coordx()].get_type() == CELL::BORDER) {
         return false;
     } // the cell is a border
     for(cell* cell__ : chosen)  { if(cell__->get_coordx() == cell_->get_coordx() && cell__->get_coordy() == cell_->get_coordy()) return false; }// the cell is in the chosen cell vector
