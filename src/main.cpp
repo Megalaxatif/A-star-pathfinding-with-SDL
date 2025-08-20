@@ -16,28 +16,20 @@ int main(){
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // clear the screen
     SDL_RenderClear(renderer);
-    std::vector<cell*> path = AstarPathfinding(start_cell, end_cell); // run the pathfinding algorithm
-    
-    // main loop
-    auto start = std::chrono::high_resolution_clock::now();
 
+    //std::vector<cell*> path = AstarPathfinding(start_cell, end_cell); // run the pathfinding algorithm
+
+    CreateGameTexture();
+    
+    InitMaze(); // initialise all cells
+
+    // main loop
     while (running){
         InputHandler(); // input handler
-
-        if (generating){
-            auto end = std::chrono::high_resolution_clock::now();
-            auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-            // fix the speed between the generations
-            if (elapsed.count() >= delay){
-                start = std::chrono::high_resolution_clock::now();
-
-                // DO SOMETHING....
-
-            }
-        }
-            RefreshGameTexture();
-            DrawGameTexture();
-            SDL_Delay(5); // little delay not to burn the cpu ;)
+        if(isDrawing) Draw();
+        RefreshGameTexture();
+        DrawGameTexture();
+        //SDL_Delay(1); // little delay not to burn the cpu ;)
     }
     return 0;
 }

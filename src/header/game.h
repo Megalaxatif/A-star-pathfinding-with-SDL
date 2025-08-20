@@ -3,8 +3,8 @@
 #include <header/cell.h>
 #include <SDL/SDL.h>
 
-#define WIDTH 100
-#define HEIGHT 100
+#define WIDTH 50
+#define HEIGHT 50
 #define SCREEN_W 500
 #define SCREEN_H 500
 #define SPEED 10
@@ -14,22 +14,28 @@
 extern SDL_Rect sourceRect;
 extern SDL_Rect destRect;
 
-SDL_Color CELL_COLOR        {255, 255, 255, 255};   // white
-extern SDL_Color START_CELL_COLOR  {40, 116, 166, 255};    // blue 
-SDL_Color END_CELL_COLOR    {125, 60, 152, 255};    // purple
-SDL_Color CHOSEN_CELL_COLOR {231, 76, 60, 255};     // red
-SDL_Color OPEN_CELL_COLOR   {34, 153, 84, 255};     // green
-SDL_Color BORDER_COLOR      {0, 0, 0, 0};           // black
+extern SDL_Color CELL_COLOR;           
+extern SDL_Color START_CELL_COLOR;     
+extern SDL_Color END_CELL_COLOR;       
+extern SDL_Color CHOSEN_CELL_COLOR;    
+extern SDL_Color OPEN_CELL_COLOR;      
+extern SDL_Color BORDER_COLOR;         
+extern SDL_Color PATH_COLOR;           
 
 extern cell* start_cell;
 extern cell* end_cell;
 extern cell maze[HEIGHT][WIDTH];
 extern SDL_Renderer* renderer;
 
+extern bool isDrawing;
+
 void InitMaze();
+void ResetMaze(); // set every cells whose type is OPEN_CELL or CHOSEN_CELL to EMPTY_SPACE
 void CreateGameTexture();
 void DrawGameTexture();
 void RefreshGameTexture();
-void DrawWall(int posx, int posy);
+void DrawCell(CELL type, int posx, int posy);
+void DrawMaze();
+void Draw();
 
 

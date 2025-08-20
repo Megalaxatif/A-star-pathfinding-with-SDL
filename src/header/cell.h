@@ -8,7 +8,8 @@ enum class CELL{
     START_CELL = 2,
     END_CELL = 3,
     CHOSEN_CELL = 4,
-    OPEN_CELL = 5
+    OPEN_CELL = 5,
+    PATH = 6
 };
 
 class cell{
@@ -31,6 +32,6 @@ class cell{
         int F_cost = 0;
         int H_cost = 0;
         int G_cost = 0;
-        unsigned short type = 0;
+        unsigned short type = (unsigned short) CELL::EMPTY_SPACE;
         cell *parent_cell;
 };
